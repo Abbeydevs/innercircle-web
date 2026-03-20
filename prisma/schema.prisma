@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model GalleryImage {
+  id        String   @id @default(uuid())
+  url       String   // The Uploadthing URL
+  alt       String   @default("Inner Circle Experience")
+  className String?  // Optional: Allows you to define grid spans like "md:col-span-2" from the admin panel
+  createdAt DateTime @default(now())
+}
+
+model VideoItem {
+  id           String   @id @default(uuid())
+  title        String
+  thumbnailUrl String   // The Uploadthing image URL for the cover
+  videoUrl     String   // The Uploadthing video URL
+  createdAt    DateTime @default(now())
+}
+
+model AdminCode {
+  id         String    @id @default(uuid())
+  code       String    @unique
+  createdAt  DateTime  @default(now())
+  lastUsedAt DateTime?
+}

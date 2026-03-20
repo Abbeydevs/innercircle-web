@@ -15,19 +15,18 @@ interface GalleryProps {
   images: GalleryImage[];
 }
 
-/* Assign bento layout classes by index pattern */
 function getGridClass(index: number): string {
   const pattern = [
     "col-span-2 row-span-2", 
-    "col-span-1 row-span-1", 
     "col-span-1 row-span-1",
-    "col-span-1 row-span-2", 
-    "col-span-2 row-span-1", 
-    "col-span-1 row-span-1", 
-    "col-span-1 row-span-1", 
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-2",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-1",
     "col-span-1 row-span-1",
     "col-span-2 row-span-1",
-    "col-span-1 row-span-2", 
+    "col-span-1 row-span-2",
     "col-span-1 row-span-1", 
     "col-span-1 row-span-1", 
   ];
@@ -48,7 +47,8 @@ export function Gallery({ images }: GalleryProps) {
       className="relative overflow-hidden"
       style={{
         background: "#07070A",
-        padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 4vw, 3rem)",
+        paddingTop: "clamp(4rem, 10vw, 8rem)",
+        paddingBottom: "clamp(4rem, 10vw, 8rem)",
       }}
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" style={{
@@ -68,6 +68,7 @@ export function Gallery({ images }: GalleryProps) {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+          style={{ padding: "0 clamp(1rem, 4vw, 3rem)" }}
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -108,21 +109,31 @@ export function Gallery({ images }: GalleryProps) {
           </motion.span>
         </motion.div>
 
-        <div
-          className="grid gap-3"
-          style={{
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gridAutoRows: "clamp(140px, 18vw, 240px)",
-          }}
-        >
+        <style>{`
+          .gallery-grid {
+            grid-template-columns: 1fr;
+            grid-auto-rows: 72vw;
+          }
+          @media (min-width: 768px) {
+            .gallery-grid {
+              grid-template-columns: repeat(4, 1fr);
+              grid-auto-rows: clamp(140px, 18vw, 240px);
+              gap: 0.75rem;
+              padding: 0 clamp(1rem, 4vw, 3rem);
+            }
+          }
+        `}</style>
+
+        <div className="grid gallery-grid">
+
           {images.map((image, index) => {
-            const gridClass = image.className || getGridClass(index);
+            const desktopClass = image.className || getGridClass(index);
             const isHovered = hovered === image.id;
 
             return (
               <motion.div
                 key={image.id}
-                className={`relative overflow-hidden group cursor-pointer ${gridClass}`}
+                className={`relative overflow-hidden group cursor-pointer md:${desktopClass}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
@@ -206,6 +217,7 @@ export function Gallery({ images }: GalleryProps) {
           })}
         </div>
 
+        <div style={{ padding: "0 clamp(1rem, 4vw, 3rem)" }}>
         <motion.div
           initial={{ scaleY: 0, opacity: 0 }}
           whileInView={{ scaleY: 1, opacity: 1 }}
@@ -219,6 +231,7 @@ export function Gallery({ images }: GalleryProps) {
             transformOrigin: "top center",
           }}
         />
+        </div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
