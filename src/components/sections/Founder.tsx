@@ -58,7 +58,7 @@ export function Founder() {
 
           <div className="relative z-10 w-full h-full overflow-hidden group" style={{ background: "rgba(255,255,255,0.04)" }}>
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+              src="/kriz.jpg"
               alt="Founder Portrait"
               fill
               className="object-cover"

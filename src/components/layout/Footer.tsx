@@ -24,20 +24,17 @@ export function Footer() {
         paddingRight: "clamp(1rem, 4vw, 3rem)",
       }}
     >
-      {/* ── Stage floor glow — mirroring the hero ── */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" style={{
         width: "40%", height: "1px",
         background: "linear-gradient(90deg, transparent, rgba(229,193,88,0.2), transparent)",
       }} />
 
-      {/* ── Deep bottom glow pool ── */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none" style={{
         width: "70%", height: "320px",
         background: "radial-gradient(ellipse at bottom, rgba(229,193,88,0.06) 0%, transparent 70%)",
         filter: "blur(40px)",
       }} />
 
-      {/* ── Spotlight beams — curtain-call effect ── */}
       {[
         { x: "22%", angle: -6, delay: 0.2 },
         { x: "50%", angle: 0,  delay: 0.6 },
@@ -59,7 +56,6 @@ export function Footer() {
               width: 1, height: 0,
               borderLeft: "90px solid transparent",
               borderRight: "90px solid transparent",
-              /* beams point upward — invert borderTop to borderBottom */
               borderBottom: `520px solid rgba(229,193,88,0.07)`,
               transformOrigin: "bottom center",
               transform: `rotate(${beam.angle}deg)`,
@@ -69,21 +65,17 @@ export function Footer() {
         </motion.div>
       ))}
 
-      {/* ── Scan lines ── */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)",
       }} />
 
-      {/* ── Corner accents ── */}
       {["top-4 left-4 border-t border-l","top-4 right-4 border-t border-r"].map((cls, i) => (
         <div key={i} className={`absolute w-5 h-5 ${cls} pointer-events-none hidden md:block`}
           style={{ borderColor: "rgba(229,193,88,0.15)" }} />
       ))}
 
-      {/* ──────────── CONTENT ──────────── */}
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
 
-        {/* ── Big ghost headline ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -106,7 +98,6 @@ export function Footer() {
             The Room<br />Is Waiting
           </h2>
 
-          {/* Logo floats over the ghost text */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -125,7 +116,6 @@ export function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* ── CTA ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -134,22 +124,20 @@ export function Footer() {
           className="flex flex-col items-center"
           style={{ gap: "clamp(1.4rem, 3vw, 2rem)" }}
         >
-          {/* Date reminder */}
           <div className="flex items-center gap-3">
             <div style={{ height: 1, width: 24, background: "linear-gradient(to right, transparent, #E5C158)" }} />
             <span style={{
               fontSize: "0.62rem", fontWeight: 700,
               letterSpacing: "0.4em", textTransform: "uppercase", color: "#E5C158",
             }}>
-              Next Episode &nbsp;·&nbsp; April 3rd, 2026
+              Inner Circle &nbsp;-&nbsp; Rise Edition · April 3rd, 2026
             </span>
             <div style={{ height: 1, width: 24, background: "linear-gradient(to left, transparent, #E5C158)" }} />
           </div>
 
-          {/* Waitlist button */}
           <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.97 }}>
             <Link
-              href="/waitlist"
+              href="https://innercircle-inky.vercel.app/"
               className="relative flex items-center justify-center overflow-hidden group"
               style={{
                 height: "54px", padding: "0 3rem",
@@ -167,7 +155,6 @@ export function Footer() {
             </Link>
           </motion.div>
 
-          {/* Social icons */}
           <div className="flex items-center gap-6">
             {socials.map(({ icon: Icon, href, label }) => (
               <motion.div key={label} whileHover={{ scale: 1.15, y: -2 }} whileTap={{ scale: 0.95 }}>
@@ -189,7 +176,6 @@ export function Footer() {
           </div>
         </motion.div>
 
-        {/* ── Divider ── */}
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
@@ -199,7 +185,7 @@ export function Footer() {
           style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)" }}
         />
 
-        {/* ── Legal row ── */}
+    
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

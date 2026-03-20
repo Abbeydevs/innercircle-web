@@ -16,9 +16,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-production-domain.com"),
+  metadataBase: new URL("https://innercirclegospelclub.com"),
   title: {
-    default: "Inner Circle | March Waitlist",
+    default: "The Inner Circle Gospel Club",
     template: "%s | Inner Circle",
   },
   description:
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Inner Circle" }],
   openGraph: {
-    title: "Inner Circle | March Waitlist",
+    title: "The Inner Circle Gospel CLub",
     description:
-      "Tickets are first released to the waitlist before the public. Join now.",
+      "Where music, presence, and community meet. Secure your spot.",
     url: "/",
     siteName: "Inner Circle",
     locale: "en_US",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Inner Circle | March Waitlist",
+    title: "The Inner Circle Gospel CLub",
     description:
-      "Tickets are first released to the waitlist before the public. Join now.",
+      "Where music, presence, and community meet. Secure your spot.",
   },
   robots: {
     index: true,

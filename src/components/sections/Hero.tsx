@@ -2,11 +2,11 @@
 
 import { motion, Variants, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Play } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-/* ─── Variants ─── */
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.5 } },
@@ -20,13 +20,11 @@ const lineVariants: Variants = {
   show: { scaleX: 1, opacity: 1, transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] } },
 };
 
-/* ─── Types ─── */
 interface Particle {
   id: number; x: number; y: number;
   size: number; duration: number; delay: number; opacity: number;
 }
 
-/* ─── Dust Particles ─── */
 function DustParticles() {
   const [particles, setParticles] = useState<Particle[]>([]);
   useEffect(() => {
@@ -60,7 +58,6 @@ function DustParticles() {
   );
 }
 
-/* ─── Spotlight Beam ─── */
 interface SpotlightProps {
   x: number; color?: string; delay?: number; angle?: number; intensity?: number;
 }
@@ -73,7 +70,6 @@ function SpotlightBeam({ x, color = "#E5C158", delay = 0, angle = 0, intensity =
       animate={{ opacity: intensity * 0.9, scaleY: 1 }}
       transition={{ duration: 2.4, delay, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Wide soft cone */}
       <motion.div
         animate={{ opacity: [intensity * 0.65, intensity, intensity * 0.65] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
@@ -87,7 +83,6 @@ function SpotlightBeam({ x, color = "#E5C158", delay = 0, angle = 0, intensity =
           filter: "blur(2px)",
         }}
       />
-      {/* Tight core */}
       <div style={{
         position: "absolute", top: 0, left: "50%",
         transform: `translateX(-50%) rotate(${angle}deg)`,
@@ -98,7 +93,6 @@ function SpotlightBeam({ x, color = "#E5C158", delay = 0, angle = 0, intensity =
         transformOrigin: "top center",
         filter: "blur(1px)",
       }} />
-      {/* Hotspot */}
       <div style={{
         position: "absolute", top: -10, left: "50%",
         transform: "translateX(-50%)",
@@ -109,7 +103,6 @@ function SpotlightBeam({ x, color = "#E5C158", delay = 0, angle = 0, intensity =
   );
 }
 
-/* ─── Scan Lines ─── */
 function ScanLines() {
   return (
     <div className="absolute inset-0 pointer-events-none z-0" style={{
@@ -118,7 +111,6 @@ function ScanLines() {
   );
 }
 
-/* ───────────────────────── HERO ───────────────────────── */
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const mouseX = useMotionValue(0);
@@ -194,7 +186,7 @@ export function Hero() {
             textTransform: "uppercase",
             fontWeight: 700,
           }}>
-            Next Episode &nbsp;·&nbsp; April 3rd, 2026
+            Inner Circle &nbsp;-&nbsp; Rise Edition · April 3rd, 2026
           </span>
           <motion.div variants={lineVariants} className="h-px w-10 bg-[#E5C158] origin-right" />
         </motion.div>
@@ -235,7 +227,7 @@ export function Hero() {
 
           <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.975 }} className="w-full sm:w-auto">
             <Link
-              href="https://tix.africa"
+              href="https://tix.africa/discover/inner-circle-rise-edition"
               target="_blank"
               rel="noopener noreferrer"
               className="relative flex items-center justify-center overflow-hidden group"
@@ -282,28 +274,27 @@ export function Hero() {
               </motion.button>
             </DialogTrigger>
 
-            <DialogContent className="p-0 border-0 overflow-hidden" style={{
+           <DialogContent className="p-0 border-0 overflow-hidden" style={{
               background: "#07070A", borderRadius: 0,
               width: "90vw", maxWidth: "860px", aspectRatio: "16/9",
               display: "flex", alignItems: "center", justifyContent: "center",
               border: "1px solid rgba(229,193,88,0.2)",
             }}>
-              <div className="flex flex-col items-center space-y-4 text-center p-8">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center"
-                  style={{ border: "1px solid rgba(229,193,88,0.2)", background: "rgba(229,193,88,0.05)" }}>
-                  <Play className="w-6 h-6 text-[#E5C158] opacity-60" />
-                </div>
-                <p style={{
-                  fontFamily: "var(--font-albert), sans-serif",
-                  fontSize: "0.9rem", color: "rgba(255,255,255,0.35)",
-                  letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700,
-                }}>Teaser Coming Soon</p>
-                <p style={{
-                  fontFamily: "var(--font-albert), sans-serif",
-                  color: "rgba(255,255,255,0.22)", fontSize: "0.82rem", letterSpacing: "0.04em",
-                }}>
-                  Check back closer to the event for the official trailer.
-                </p>
+              <VisuallyHidden>
+                <DialogTitle>Inner Circle Teaser Video</DialogTitle>
+              </VisuallyHidden>
+              
+              <div className="w-full h-full bg-black">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://www.youtube.com/embed/8FGxrlyWurA?autoplay=1&rel=0" 
+                  title="Inner Circle Teaser" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                  className="w-full h-full"
+                />
               </div>
             </DialogContent>
           </Dialog>

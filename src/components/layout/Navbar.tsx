@@ -40,7 +40,7 @@ export function Navbar() {
 
       <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.97 }}>
         <Link
-          href="/waitlist"
+          href="https://innercircle-inky.vercel.app/"
           className="relative overflow-hidden group flex items-center justify-center"
           style={{
             height: "38px",

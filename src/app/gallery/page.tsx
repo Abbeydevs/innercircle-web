@@ -6,7 +6,7 @@ import { FullGallery } from "@/components/sections/FullGallery";
 export default async function GalleryPage() {
   const rawGalleryImages = await getGalleryImages();
 
-  const images = rawGalleryImages.map((img) => ({
+  const images = rawGalleryImages.map((img: { id: string; url: string; alt: string }) => ({
     id: img.id,
     url: img.url,
     alt: img.alt,
