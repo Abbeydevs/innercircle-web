@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Twitter, Youtube } from "lucide-react";
+import { Instagram, Twitter, Youtube, Music2 as Tiktok } from "lucide-react";
 
 const socials = [
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Instagram, href: "https://www.instagram.com/innercircle.ig/", label: "Instagram" },
+  { icon: Tiktok, href: "https://www.tiktok.com/@innercircle.tk", label: "Tiktok" },
+  { icon: Youtube, href: "https://www.youtube.com/channel/UCqW5n6g6JwUjuuIAdgX-BgQ", label: "YouTube" },
 ];
 
 export function Footer() {
