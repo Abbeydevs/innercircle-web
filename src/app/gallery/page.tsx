@@ -3,6 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { getGalleryImages } from "@/actions/media";
 import { FullGallery } from "@/components/sections/FullGallery";
 
+export const dynamic = "force-dynamic";
+
 export default async function GalleryPage() {
   const rawGalleryImages = await getGalleryImages();
 

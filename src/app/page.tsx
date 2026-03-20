@@ -8,6 +8,8 @@ import { Footer } from "@/components/layout/Footer";
 
 import { getGalleryImages, getVideoItems } from "@/actions/media";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const rawGalleryImages = await getGalleryImages();
   const videoItems = await getVideoItems();
