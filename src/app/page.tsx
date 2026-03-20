@@ -12,7 +12,7 @@ export default async function Home() {
   const rawGalleryImages = await getGalleryImages();
   const videoItems = await getVideoItems();
 
-  const allGalleryImages = rawGalleryImages.map((img) => ({
+  const allGalleryImages = rawGalleryImages.map((img: { id: string; url: string; alt: string }) => ({
     id: img.id,
     url: img.url,
     alt: img.alt,
