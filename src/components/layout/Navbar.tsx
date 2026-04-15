@@ -25,10 +25,12 @@ export function Navbar() {
         background: scrolled ? "rgba(7, 7, 10, 0.85)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(229, 193, 88, 0.1)" : "1px solid transparent",
+        borderBottom: scrolled
+          ? "1px solid rgba(229, 193, 88, 0.1)"
+          : "1px solid transparent",
       }}
     >
-      <Link href="/" className="relative h-8 w-32 md:h-9 md:w-36 flex-shrink-0">
+      <Link href="/" className="relative h-8 w-32 md:h-9 md:w-36 shrink-0">
         <Image
           src="/innercircle-logo.png"
           alt="Inner Circle"
@@ -57,8 +59,11 @@ export function Navbar() {
           }}
         >
           <span
-            className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent)" }}
+            className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent)",
+            }}
           />
           Join Waitlist
         </Link>
