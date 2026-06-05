@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Twitter, Youtube, Music2 as Tiktok } from "lucide-react";
+import { Instagram, Youtube, Music2 as Tiktok } from "lucide-react";
 
 const socials = [
   {
