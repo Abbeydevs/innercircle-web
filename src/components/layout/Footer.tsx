@@ -184,7 +184,7 @@ export function Footer() {
                 color: "#E5C158",
               }}
             >
-              Inner Circle &nbsp;-&nbsp; May Edition · Date Announced Soon
+              Inner Circle &nbsp;-&nbsp; Next Edition · Date Announced Soon
             </span>
             <div
               style={{

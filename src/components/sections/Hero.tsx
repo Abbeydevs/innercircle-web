@@ -83,6 +83,7 @@ function DustParticles() {
           }}
           animate={{
             y: [0, -70, 0],
+            // eslint-disable-next-line react-hooks/purity
             x: [0, (Math.random() - 0.5) * 36, 0],
             opacity: [p.opacity, p.opacity * 0.15, p.opacity],
           }}
@@ -306,7 +307,7 @@ export function Hero() {
               fontWeight: 700,
             }}
           >
-            Inner Circle &nbsp;-&nbsp; May Edition · Date Announced Soon
+            Inner Circle &nbsp;-&nbsp; Next Edition · Date Announced Soon
           </span>
           <motion.div
             variants={lineVariants}
